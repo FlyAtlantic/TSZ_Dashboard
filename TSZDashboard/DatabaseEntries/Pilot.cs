@@ -58,6 +58,7 @@ namespace TSZDashboard.DatabaseEntries
         string sqlReadCallsign = "SELECT user_id, user_nome, user_apelido FROM `utilizadores` WHERE callsign = @Callsign";
         string sqlUpdate = "UPDATE utilizadores set user_nome = @name, user_apelido = @surname WHERE user_id = @ID LIMIT 1";
         string sqlDelete = "DELETE FROM `utilizadores` WHERE `utilizadores`.`user_id` = @ID LIMIT 1";
+        string sqlLogbook = "SELECT * FROM pireps WHERE pilot_id=@ID";
 
         MySqlConnection conn = new MySqlConnection(ConnectionString);
 
@@ -177,6 +178,37 @@ namespace TSZDashboard.DatabaseEntries
                 conn.Close();
             }
 
+        }
+
+        public void LogBook()
+        {
+            try
+            {
+                conn.Open();
+
+                MySqlCommand sqlCmd = new MySqlCommand(sqlLogbook, conn);
+                sqlCmd.Parameters.AddWithValue("@ID", ID);
+
+                MySqlDataReader sqlCmdRes = sqlCmd.ExecuteReader();
+                if (sqlCmdRes.HasRows)
+                    while (sqlCmdRes.Read())
+                    {
+                        ID = (int)sqlCmdRes[0];
+                        Name = (string)sqlCmdRes[1];
+                        Surname = (string)sqlCmdRes[2];
+                    }
+                else
+                    throw new Exception("Não encontrado o LogBook " + ID.ToString());
+            }
+            catch (Exception crap)
+            {
+                // pass the exception to the caller with an usefull message
+                throw new Exception("Falhou a ler o LogBook " + ID.ToString(), crap);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
     }

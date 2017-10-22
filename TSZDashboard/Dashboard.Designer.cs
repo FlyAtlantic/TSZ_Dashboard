@@ -33,17 +33,23 @@
             this.tabPilots = new System.Windows.Forms.TabPage();
             this.tabProfile = new System.Windows.Forms.TabControl();
             this.tabProfileInformation = new System.Windows.Forms.TabPage();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pilotCtrl1 = new TSZDashboard.UI.PilotCtrl();
+            this.btnSaveProfile = new System.Windows.Forms.Button();
+            this.tabLogBook = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
-            this.pilotCtrl1 = new TSZDashboard.UI.PilotCtrl();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPilotList.SuspendLayout();
             this.tabPilots.SuspendLayout();
             this.tabProfile.SuspendLayout();
             this.tabProfileInformation.SuspendLayout();
+            this.tabLogBook.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPilotList
@@ -81,7 +87,7 @@
             // tabProfile
             // 
             this.tabProfile.Controls.Add(this.tabProfileInformation);
-            this.tabProfile.Controls.Add(this.tabPage3);
+            this.tabProfile.Controls.Add(this.tabLogBook);
             this.tabProfile.Controls.Add(this.tabPage4);
             this.tabProfile.Location = new System.Drawing.Point(0, 0);
             this.tabProfile.Name = "tabProfile";
@@ -92,8 +98,7 @@
             // tabProfileInformation
             // 
             this.tabProfileInformation.Controls.Add(this.pilotCtrl1);
-            this.tabProfileInformation.Controls.Add(this.btnFind);
-            this.tabProfileInformation.Controls.Add(this.btnSave);
+            this.tabProfileInformation.Controls.Add(this.btnSaveProfile);
             this.tabProfileInformation.Location = new System.Drawing.Point(4, 22);
             this.tabProfileInformation.Name = "tabProfileInformation";
             this.tabProfileInformation.Padding = new System.Windows.Forms.Padding(3);
@@ -102,35 +107,33 @@
             this.tabProfileInformation.Text = "Profile";
             this.tabProfileInformation.UseVisualStyleBackColor = true;
             // 
-            // btnFind
+            // pilotCtrl1
             // 
-            this.btnFind.Location = new System.Drawing.Point(690, 271);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 8;
-            this.btnFind.Text = "Find";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            this.pilotCtrl1.Location = new System.Drawing.Point(6, 6);
+            this.pilotCtrl1.Name = "pilotCtrl1";
+            this.pilotCtrl1.Size = new System.Drawing.Size(587, 120);
+            this.pilotCtrl1.TabIndex = 9;
             // 
-            // btnSave
+            // btnSaveProfile
             // 
-            this.btnSave.Location = new System.Drawing.Point(921, 24);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 54);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSaveProfile.Location = new System.Drawing.Point(921, 24);
+            this.btnSaveProfile.Name = "btnSaveProfile";
+            this.btnSaveProfile.Size = new System.Drawing.Size(75, 54);
+            this.btnSaveProfile.TabIndex = 1;
+            this.btnSaveProfile.Text = "Save";
+            this.btnSaveProfile.UseVisualStyleBackColor = true;
+            this.btnSaveProfile.Click += new System.EventHandler(this.btnSaveProfile_Click);
             // 
-            // tabPage3
+            // tabLogBook
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1032, 629);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabLogBook.Controls.Add(this.dataGridView1);
+            this.tabLogBook.Location = new System.Drawing.Point(4, 22);
+            this.tabLogBook.Name = "tabLogBook";
+            this.tabLogBook.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLogBook.Size = new System.Drawing.Size(1032, 629);
+            this.tabLogBook.TabIndex = 1;
+            this.tabLogBook.Text = "LogBook";
+            this.tabLogBook.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -152,19 +155,50 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(563, 12);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 8;
+            this.btnFind.Text = "Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
             // txtFind
             // 
-            this.txtFind.Location = new System.Drawing.Point(604, 352);
+            this.txtFind.Location = new System.Drawing.Point(457, 12);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(100, 20);
             this.txtFind.TabIndex = 7;
             // 
-            // pilotCtrl1
+            // dataGridView1
             // 
-            this.pilotCtrl1.Location = new System.Drawing.Point(6, 6);
-            this.pilotCtrl1.Name = "pilotCtrl1";
-            this.pilotCtrl1.Size = new System.Drawing.Size(587, 120);
-            this.pilotCtrl1.TabIndex = 9;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(184, 272);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(390, 176);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
             // 
             // Dashboard
             // 
@@ -172,6 +206,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1308, 724);
             this.Controls.Add(this.txtFind);
+            this.Controls.Add(this.btnFind);
             this.Controls.Add(this.tabPilotList);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
@@ -179,6 +214,8 @@
             this.tabPilots.ResumeLayout(false);
             this.tabProfile.ResumeLayout(false);
             this.tabProfileInformation.ResumeLayout(false);
+            this.tabLogBook.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,12 +228,16 @@
         private System.Windows.Forms.TabPage tabPilots;
         private System.Windows.Forms.TabControl tabProfile;
         private System.Windows.Forms.TabPage tabProfileInformation;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TabPage tabLogBook;
+        private System.Windows.Forms.Button btnSaveProfile;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.TextBox txtFind;
         private UI.PilotCtrl pilotCtrl1;
+        private System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

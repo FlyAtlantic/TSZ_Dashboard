@@ -23,7 +23,7 @@ namespace TSZDashboard
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSaveProfile_Click(object sender, EventArgs e)
         {
 
             pilotCtrl1.Save();
@@ -36,7 +36,19 @@ namespace TSZDashboard
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            tabPilotList.SelectTab(1);
+            tabProfile.SelectTab(0);
             pilotCtrl1.Update(new Pilot(txtFind.Text));
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Pilot p;
+
+            //dataGridView1.UpdateCellValue(columnIndex) = p.Callsign;
+
+            //dataGridView1 row = dataGridView1.SelectedRow;
+            //TextBox1.Text = row.RowIndex.ToString();
         }
     }
 }
