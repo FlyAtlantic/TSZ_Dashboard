@@ -33,9 +33,13 @@
             this.tabPilots = new System.Windows.Forms.TabPage();
             this.tabProfile = new System.Windows.Forms.TabControl();
             this.tabProfileInformation = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.pilotCtrl1 = new TSZDashboard.UI.PilotCtrl();
+            this.btnFind = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.pilotCtrl1 = new TSZDashboard.UI.PilotCtrl();
             this.tabPilotList.SuspendLayout();
             this.tabPilots.SuspendLayout();
             this.tabProfile.SuspendLayout();
@@ -46,6 +50,7 @@
             // 
             this.tabPilotList.Controls.Add(this.tabPage1);
             this.tabPilotList.Controls.Add(this.tabPilots);
+            this.tabPilotList.Controls.Add(this.tabPage2);
             this.tabPilotList.Location = new System.Drawing.Point(12, 35);
             this.tabPilotList.Name = "tabPilotList";
             this.tabPilotList.SelectedIndex = 0;
@@ -77,6 +82,7 @@
             // 
             this.tabProfile.Controls.Add(this.tabProfileInformation);
             this.tabProfile.Controls.Add(this.tabPage3);
+            this.tabProfile.Controls.Add(this.tabPage4);
             this.tabProfile.Location = new System.Drawing.Point(0, 0);
             this.tabProfile.Name = "tabProfile";
             this.tabProfile.SelectedIndex = 0;
@@ -85,8 +91,9 @@
             // 
             // tabProfileInformation
             // 
-            this.tabProfileInformation.Controls.Add(this.btnSave);
             this.tabProfileInformation.Controls.Add(this.pilotCtrl1);
+            this.tabProfileInformation.Controls.Add(this.btnFind);
+            this.tabProfileInformation.Controls.Add(this.btnSave);
             this.tabProfileInformation.Location = new System.Drawing.Point(4, 22);
             this.tabProfileInformation.Name = "tabProfileInformation";
             this.tabProfileInformation.Padding = new System.Windows.Forms.Padding(3);
@@ -95,22 +102,15 @@
             this.tabProfileInformation.Text = "Profile";
             this.tabProfileInformation.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // btnFind
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(192, 74);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // pilotCtrl1
-            // 
-            this.pilotCtrl1.Location = new System.Drawing.Point(0, 0);
-            this.pilotCtrl1.Name = "pilotCtrl1";
-            this.pilotCtrl1.Size = new System.Drawing.Size(587, 120);
-            this.pilotCtrl1.TabIndex = 0;
+            this.btnFind.Location = new System.Drawing.Point(690, 271);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 8;
+            this.btnFind.Text = "Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnSave
             // 
@@ -120,12 +120,58 @@
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1032, 629);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1032, 629);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1036, 651);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtFind
+            // 
+            this.txtFind.Location = new System.Drawing.Point(604, 352);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(100, 20);
+            this.txtFind.TabIndex = 7;
+            // 
+            // pilotCtrl1
+            // 
+            this.pilotCtrl1.Location = new System.Drawing.Point(6, 6);
+            this.pilotCtrl1.Name = "pilotCtrl1";
+            this.pilotCtrl1.Size = new System.Drawing.Size(587, 120);
+            this.pilotCtrl1.TabIndex = 9;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1308, 724);
+            this.Controls.Add(this.txtFind);
             this.Controls.Add(this.tabPilotList);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
@@ -134,6 +180,7 @@
             this.tabProfile.ResumeLayout(false);
             this.tabProfileInformation.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -146,6 +193,10 @@
         private System.Windows.Forms.TabPage tabProfileInformation;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.TextBox txtFind;
         private UI.PilotCtrl pilotCtrl1;
     }
 }

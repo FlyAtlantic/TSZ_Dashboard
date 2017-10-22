@@ -16,16 +16,27 @@ namespace TSZDashboard
         public Dashboard()
         {
             InitializeComponent();
-
-            Pilot p = new Pilot(5);
-
-            pilotCtrl1.Update(p);
-
         }
 
         private void pilotCtrl1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            pilotCtrl1.Save();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            pilotCtrl1.Update(new Pilot(txtFind.Text));
         }
     }
 }

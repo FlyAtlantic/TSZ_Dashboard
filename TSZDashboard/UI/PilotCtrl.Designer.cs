@@ -32,6 +32,8 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.Label();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.lblSurname = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblName
@@ -47,7 +49,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(61, 81);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(518, 20);
+            this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 1;
             // 
             // txtID
@@ -66,10 +68,28 @@
             this.lblID.TabIndex = 2;
             this.lblID.Text = "ID";
             // 
+            // txtSurname
+            // 
+            this.txtSurname.Location = new System.Drawing.Point(233, 81);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(100, 20);
+            this.txtSurname.TabIndex = 5;
+            // 
+            // lblSurname
+            // 
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Location = new System.Drawing.Point(178, 81);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(49, 13);
+            this.lblSurname.TabIndex = 4;
+            this.lblSurname.Text = "Surname";
+            // 
             // PilotCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtSurname);
+            this.Controls.Add(this.lblSurname);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.txtName);
@@ -87,5 +107,7 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.Label lblSurname;
     }
 }
