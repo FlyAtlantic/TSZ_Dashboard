@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TSZDashboard.Forms;
 
 namespace TSZDashboard
 {
@@ -14,7 +15,7 @@ namespace TSZDashboard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            Application.Run(new LoginFrm());
 
         }
     }      

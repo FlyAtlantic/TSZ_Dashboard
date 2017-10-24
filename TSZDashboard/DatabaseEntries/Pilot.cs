@@ -41,7 +41,7 @@ namespace TSZDashboard.DatabaseEntries
         }
         #endregion propriedades
 
-        private static string ConnectionString
+        public static string ConnectionString
         {
             get
             {
@@ -54,11 +54,13 @@ namespace TSZDashboard.DatabaseEntries
             }
         }
 
+        #region SqlEntries
         string sqlRead = "SELECT user_nome, user_apelido, callsign FROM `utilizadores` WHERE user_id = @ID";
         string sqlReadCallsign = "SELECT user_id, user_nome, user_apelido FROM `utilizadores` WHERE callsign = @Callsign";
         string sqlUpdate = "UPDATE utilizadores set user_nome = @name, user_apelido = @surname WHERE user_id = @ID LIMIT 1";
         string sqlDelete = "DELETE FROM `utilizadores` WHERE `utilizadores`.`user_id` = @ID LIMIT 1";
         string sqlLogbook = "SELECT * FROM pireps WHERE pilot_id=@ID";
+        #endregion region SqlEntries
 
         MySqlConnection conn = new MySqlConnection(ConnectionString);
 

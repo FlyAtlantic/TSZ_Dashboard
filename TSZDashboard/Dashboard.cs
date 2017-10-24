@@ -13,6 +13,7 @@ namespace TSZDashboard
 {
     public partial class Dashboard : Form
     {
+
         public Dashboard()
         {
             InitializeComponent();
@@ -50,5 +51,7 @@ namespace TSZDashboard
             //dataGridView1 row = dataGridView1.SelectedRow;
             //TextBox1.Text = row.RowIndex.ToString();
         }
+
+
     }
 }
