@@ -36,10 +36,8 @@
             this.pilotCtrl1 = new TSZDashboard.UI.PilotCtrl();
             this.btnSaveProfile = new System.Windows.Forms.Button();
             this.tabLogBook = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnFind = new System.Windows.Forms.Button();
@@ -126,6 +124,7 @@
             // 
             // tabLogBook
             // 
+            this.tabLogBook.Controls.Add(this.button2);
             this.tabLogBook.Controls.Add(this.dataGridView1);
             this.tabLogBook.Location = new System.Drawing.Point(4, 22);
             this.tabLogBook.Name = "tabLogBook";
@@ -135,33 +134,24 @@
             this.tabLogBook.Text = "LogBook";
             this.tabLogBook.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(919, 30);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Column1,
-            this.Column2});
-            this.dataGridView1.Location = new System.Drawing.Point(184, 272);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 6);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(390, 176);
+            this.dataGridView1.Size = new System.Drawing.Size(873, 617);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
             // 
             // tabPage4
             // 
@@ -210,6 +200,7 @@
             this.Controls.Add(this.tabPilotList);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Dashboard_FormClosed);
             this.tabPilotList.ResumeLayout(false);
             this.tabPilots.ResumeLayout(false);
             this.tabProfile.ResumeLayout(false);
@@ -236,8 +227,6 @@
         private UI.PilotCtrl pilotCtrl1;
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -41,19 +41,6 @@ namespace TSZDashboard.DatabaseEntries
         }
         #endregion propriedades
 
-        public static string ConnectionString
-        {
-            get
-            {
-                return String.Format(
-                    "server={0};uid={1};pwd={2};database={3};Connection Timeout=60;",
-                    Properties.Settings.Default.Server,
-                    Properties.Settings.Default.Dbuser,
-                    Properties.Settings.Default.Dbpass,
-                    Properties.Settings.Default.Database);
-            }
-        }
-
         #region SqlEntries
         string sqlRead = "SELECT user_nome, user_apelido, callsign FROM `utilizadores` WHERE user_id = @ID";
         string sqlReadCallsign = "SELECT user_id, user_nome, user_apelido FROM `utilizadores` WHERE callsign = @Callsign";
@@ -62,7 +49,7 @@ namespace TSZDashboard.DatabaseEntries
         string sqlLogbook = "SELECT * FROM pireps WHERE pilot_id=@ID";
         #endregion region SqlEntries
 
-        MySqlConnection conn = new MySqlConnection(ConnectionString);
+        MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
 
 
 

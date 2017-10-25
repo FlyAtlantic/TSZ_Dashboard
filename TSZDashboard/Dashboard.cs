@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TSZDashboard.DatabaseEntries;
+using MySql.Data.MySqlClient;
 
 namespace TSZDashboard
 {
@@ -32,7 +33,7 @@ namespace TSZDashboard
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -52,6 +53,32 @@ namespace TSZDashboard
             //TextBox1.Text = row.RowIndex.ToString();
         }
 
+        private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
+
+            try
+            {
+                conn.Open();
+
+                MySqlDataAdapter mysqlDs = new MySqlDataAdapter("select * from utilizadores", conn);
+                DataSet ds = new DataSet();
+                mysqlDs.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+            }
+            catch (Exception crap)
+            {
+                MessageBox.Show(crap.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

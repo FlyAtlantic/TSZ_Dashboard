@@ -43,7 +43,7 @@ namespace TSZDashboard.DatabaseEntries
         {
             bool validLogin = false;
             string sqlStrValidateLogin = "select count(*) from utilizadores where `user_email`=@email and `user_senha`=@password;";
-            MySqlConnection conn = new MySqlConnection(Pilot.ConnectionString);
+            MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
 
             try
             {

@@ -18,5 +18,18 @@ namespace TSZDashboard
             Application.Run(new LoginFrm());
 
         }
+
+        public static string ConnectionString
+        {
+            get
+            {
+                return String.Format(
+                    "server={0};uid={1};pwd={2};database={3};Connection Timeout=60;",
+                    Properties.Settings.Default.Server,
+                    Properties.Settings.Default.Dbuser,
+                    Properties.Settings.Default.Dbpass,
+                    Properties.Settings.Default.Database);
+            }
+        }
     }      
 }
