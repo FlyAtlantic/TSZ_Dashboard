@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using TSZDashboard;
+using System.Data;
+using System.Windows.Forms;
 
 
 namespace TSZDashboard.DatabaseEntries
@@ -17,6 +19,9 @@ namespace TSZDashboard.DatabaseEntries
         }
     }
 
+    /// <summary>
+    /// Database wrapper for table utilizadores
+    /// </summary>
     public class Pilot
     {
 
@@ -169,36 +174,6 @@ namespace TSZDashboard.DatabaseEntries
 
         }
 
-        public void LogBook()
-        {
-            try
-            {
-                conn.Open();
-
-                MySqlCommand sqlCmd = new MySqlCommand(sqlLogbook, conn);
-                sqlCmd.Parameters.AddWithValue("@ID", ID);
-
-                MySqlDataReader sqlCmdRes = sqlCmd.ExecuteReader();
-                if (sqlCmdRes.HasRows)
-                    while (sqlCmdRes.Read())
-                    {
-                        ID = (int)sqlCmdRes[0];
-                        Name = (string)sqlCmdRes[1];
-                        Surname = (string)sqlCmdRes[2];
-                    }
-                else
-                    throw new Exception("Não encontrado o LogBook " + ID.ToString());
-            }
-            catch (Exception crap)
-            {
-                // pass the exception to the caller with an usefull message
-                throw new Exception("Falhou a ler o LogBook " + ID.ToString(), crap);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
 
     }
 }

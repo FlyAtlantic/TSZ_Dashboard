@@ -41,16 +41,8 @@ namespace TSZDashboard
             tabPilotList.SelectTab(1);
             tabProfile.SelectTab(0);
             pilotCtrl1.Update(new Pilot(txtFind.Text));
-        }
+            FillLogBookDataGrid();
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Pilot p;
-
-            //dataGridView1.UpdateCellValue(columnIndex) = p.Callsign;
-
-            //dataGridView1 row = dataGridView1.SelectedRow;
-            //TextBox1.Text = row.RowIndex.ToString();
         }
 
         private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
@@ -58,7 +50,7 @@ namespace TSZDashboard
             Application.Exit();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void FillLogBookDataGrid()
         {
             MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
 
@@ -66,7 +58,12 @@ namespace TSZDashboard
             {
                 conn.Open();
 
-                MySqlDataAdapter mysqlDs = new MySqlDataAdapter("select * from utilizadores", conn);
+                string sqlLogbook = " select `date`, `departure`, `destination`, `pireps`.`flighttime`, `aircraft`, `ft/pm`, `sum`, `eps_granted`, `obs` from pireps left join flights on pireps.flightid = flights.idf left join utilizadores on pireps.pilotid = utilizadores.user_id where utilizadores.callsign = @Callsign";
+
+                MySqlCommand sqlCmd = new MySqlCommand(sqlLogbook, conn);
+                sqlCmd.Parameters.AddWithValue("@Callsign", txtFind.Text);
+
+                MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
                 DataSet ds = new DataSet();
                 mysqlDs.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];

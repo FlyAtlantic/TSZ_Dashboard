@@ -36,7 +36,6 @@
             this.pilotCtrl1 = new TSZDashboard.UI.PilotCtrl();
             this.btnSaveProfile = new System.Windows.Forms.Button();
             this.tabLogBook = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -58,7 +57,7 @@
             this.tabPilotList.Location = new System.Drawing.Point(12, 35);
             this.tabPilotList.Name = "tabPilotList";
             this.tabPilotList.SelectedIndex = 0;
-            this.tabPilotList.Size = new System.Drawing.Size(1044, 677);
+            this.tabPilotList.Size = new System.Drawing.Size(1048, 677);
             this.tabPilotList.TabIndex = 0;
             // 
             // tabPage1
@@ -77,7 +76,7 @@
             this.tabPilots.Location = new System.Drawing.Point(4, 22);
             this.tabPilots.Name = "tabPilots";
             this.tabPilots.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPilots.Size = new System.Drawing.Size(1036, 651);
+            this.tabPilots.Size = new System.Drawing.Size(1040, 651);
             this.tabPilots.TabIndex = 1;
             this.tabPilots.Text = "Pilots";
             this.tabPilots.UseVisualStyleBackColor = true;
@@ -100,7 +99,7 @@
             this.tabProfileInformation.Location = new System.Drawing.Point(4, 22);
             this.tabProfileInformation.Name = "tabProfileInformation";
             this.tabProfileInformation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProfileInformation.Size = new System.Drawing.Size(1032, 629);
+            this.tabProfileInformation.Size = new System.Drawing.Size(854, 629);
             this.tabProfileInformation.TabIndex = 0;
             this.tabProfileInformation.Text = "Profile";
             this.tabProfileInformation.UseVisualStyleBackColor = true;
@@ -114,7 +113,7 @@
             // 
             // btnSaveProfile
             // 
-            this.btnSaveProfile.Location = new System.Drawing.Point(921, 24);
+            this.btnSaveProfile.Location = new System.Drawing.Point(623, 29);
             this.btnSaveProfile.Name = "btnSaveProfile";
             this.btnSaveProfile.Size = new System.Drawing.Size(75, 54);
             this.btnSaveProfile.TabIndex = 1;
@@ -124,7 +123,6 @@
             // 
             // tabLogBook
             // 
-            this.tabLogBook.Controls.Add(this.button2);
             this.tabLogBook.Controls.Add(this.dataGridView1);
             this.tabLogBook.Location = new System.Drawing.Point(4, 22);
             this.tabLogBook.Name = "tabLogBook";
@@ -134,24 +132,13 @@
             this.tabLogBook.Text = "LogBook";
             this.tabLogBook.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(919, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 6);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(873, 617);
+            this.dataGridView1.Size = new System.Drawing.Size(1033, 617);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // tabPage4
             // 
@@ -194,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 724);
+            this.ClientSize = new System.Drawing.Size(1072, 724);
             this.Controls.Add(this.txtFind);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.tabPilotList);
@@ -227,6 +214,5 @@
         private UI.PilotCtrl pilotCtrl1;
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
     }
 }
