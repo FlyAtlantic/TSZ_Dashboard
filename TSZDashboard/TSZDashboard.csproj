@@ -72,6 +72,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="UI\FlightC172Ctrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FlightC172Ctrl.Designer.cs">
+      <DependentUpon>FlightC172Ctrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FlightsByAircraftCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FlightsByAircraftCtrl.Designer.cs">
+      <DependentUpon>FlightsByAircraftCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\PilotCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,6 +105,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginFrm.resx">
       <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FlightC172Ctrl.resx">
+      <DependentUpon>FlightC172Ctrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FlightsByAircraftCtrl.resx">
+      <DependentUpon>FlightsByAircraftCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PilotCtrl.resx">
       <DependentUpon>PilotCtrl.cs</DependentUpon>

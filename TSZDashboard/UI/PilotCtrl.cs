@@ -43,10 +43,10 @@ namespace TSZDashboard.UI
             {
                 conn.Open();
 
-                string sqlPilotHub = " SELECT hubs.id, hubs.icao FROM hubs left join utilizadores on utilizadores.hub = hubs.id WHERE utilizadores.callsign = @Callsign";
+                string sqlPilotHub = " SELECT hubs.id, hubs.icao FROM hubs left join utilizadores on utilizadores.hub = hubs.id WHERE utilizadores.user_id = @ID";
 
                 MySqlCommand sqlCmd = new MySqlCommand(sqlPilotHub, conn);
-                sqlCmd.Parameters.AddWithValue("@Callsign", txtCallsign.Text);
+                sqlCmd.Parameters.AddWithValue("@ID", txtID.Text);
 
                 MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
                 DataSet ds = new DataSet();
@@ -73,10 +73,10 @@ namespace TSZDashboard.UI
             {
                 conn.Open();
 
-                string sqlLevelId = "SELECT utilizadores.levelid, user_level.name FROM utilizadores left join user_level on utilizadores.levelid  = user_level.levelid WHERE utilizadores.callsign = @Callsign";
+                string sqlLevelId = "SELECT utilizadores.levelid, user_level.name FROM utilizadores left join user_level on utilizadores.levelid  = user_level.levelid WHERE utilizadores.user_id = @ID";
 
                 MySqlCommand sqlCmd = new MySqlCommand(sqlLevelId, conn);
-                sqlCmd.Parameters.AddWithValue("@Callsign", txtCallsign.Text);
+                sqlCmd.Parameters.AddWithValue("@ID", txtID.Text);
 
                 MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
                 DataSet ds = new DataSet();
@@ -103,10 +103,10 @@ namespace TSZDashboard.UI
             {
                 conn.Open();
 
-                string sqlRate = "SELECT utilizadores.rate, ratings.ratingname FROM utilizadores left join ratings on utilizadores.rate  = ratings.id WHERE utilizadores.callsign = @Callsign";
+                string sqlRate = "SELECT utilizadores.rate, ratings.ratingname FROM utilizadores left join ratings on utilizadores.rate  = ratings.id WHERE utilizadores.user_id = @ID";
 
                 MySqlCommand sqlCmd = new MySqlCommand(sqlRate, conn);
-                sqlCmd.Parameters.AddWithValue("@Callsign", txtCallsign.Text);
+                sqlCmd.Parameters.AddWithValue("@ID", txtID.Text);
 
                 MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
                 DataSet ds = new DataSet();
@@ -133,17 +133,17 @@ namespace TSZDashboard.UI
             {
                 conn.Open();
 
-                string sqlRank = "SELECT utilizadores.rank, ranks.rank FROM utilizadores left join ranks on utilizadores.rank  = ranks.rankid WHERE utilizadores.callsign = @Callsign";
+                string sqlRank = "SELECT utilizadores.rank as ID, ranks.rank as name FROM utilizadores left join ranks on utilizadores.rank  = ranks.rankid WHERE utilizadores.user_id = @ID";
 
                 MySqlCommand sqlCmd = new MySqlCommand(sqlRank, conn);
-                sqlCmd.Parameters.AddWithValue("@Callsign", txtCallsign.Text);
+                sqlCmd.Parameters.AddWithValue("@ID", txtID.Text);
 
                 MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
                 DataSet ds = new DataSet();
                 mysqlDs.Fill(ds);
                 cboxRank.DataSource = ds.Tables[0];
-                cboxRank.ValueMember = "rank";
-                cboxRank.DisplayMember = "rank";
+                cboxRank.ValueMember = "ID";
+                cboxRank.DisplayMember = "name";
             }
             catch (Exception crap)
             {
@@ -163,10 +163,10 @@ namespace TSZDashboard.UI
             {
                 conn.Open();
 
-                string sqlStaffLevel = "SELECT utilizadores.stafflevel, adminlevel.name FROM utilizadores left join adminlevel on utilizadores.stafflevel  = adminlevel.level WHERE utilizadores.callsign = @Callsign";
+                string sqlStaffLevel = "SELECT utilizadores.stafflevel, adminlevel.name FROM utilizadores left join adminlevel on utilizadores.stafflevel  = adminlevel.level WHERE utilizadores.user_id = @ID";
 
                 MySqlCommand sqlCmd = new MySqlCommand(sqlStaffLevel, conn);
-                sqlCmd.Parameters.AddWithValue("@Callsign", txtCallsign.Text);
+                sqlCmd.Parameters.AddWithValue("@ID", txtID.Text);
 
                 MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
                 DataSet ds = new DataSet();
@@ -194,9 +194,8 @@ namespace TSZDashboard.UI
 
             txtID.Text = p.ID.ToString();
             txtName.Text = p.Name;
-            txtSurname.Text = p.Surname;
             txtAntique.Text = p.Antique.ToString();
-            txtCallsign.Text = p.PilotCallsign.ToString();
+            txtCallsign.Text = "TSZ" + p.PilotCallsign.ToString();
             txtEmail.Text = p.Email.ToString();
             txtVatsimId.Text = p.VatsimId;
             if (p.ActiveAccount == 1)
@@ -220,8 +219,6 @@ namespace TSZDashboard.UI
 
         public void Save()
         {
-            p.Name = txtName.Text;
-            p.Surname = txtSurname.Text;
             p.Update();
         }
     }

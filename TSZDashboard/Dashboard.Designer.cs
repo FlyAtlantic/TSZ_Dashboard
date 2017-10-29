@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tabPilotList = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPilots = new System.Windows.Forms.TabPage();
             this.tabProfile = new System.Windows.Forms.TabControl();
             this.tabProfileInformation = new System.Windows.Forms.TabPage();
@@ -47,6 +46,16 @@
             this.txtFind = new System.Windows.Forms.TextBox();
             this.tabQualifications = new System.Windows.Forms.TabPage();
             this.GridQualificatioms = new System.Windows.Forms.DataGridView();
+            this.tabAcademy = new System.Windows.Forms.TabPage();
+            this.GridTeoricalExams = new System.Windows.Forms.DataGridView();
+            this.GridPraticalExams = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnBasicQualification = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.flightsByAircraftCtrl = new TSZDashboard.UI.FlightsByAircraftCtrl();
+            this.GridAvaialbleTExams = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPilotList.SuspendLayout();
             this.tabPilots.SuspendLayout();
             this.tabProfile.SuspendLayout();
@@ -55,13 +64,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabTypeRatings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridTypeRatings)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.tabQualifications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridQualificatioms)).BeginInit();
+            this.tabAcademy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridTeoricalExams)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridPraticalExams)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridAvaialbleTExams)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPilotList
             // 
-            this.tabPilotList.Controls.Add(this.tabPage1);
             this.tabPilotList.Controls.Add(this.tabPilots);
             this.tabPilotList.Controls.Add(this.tabPage2);
             this.tabPilotList.Location = new System.Drawing.Point(12, 35);
@@ -69,16 +82,6 @@
             this.tabPilotList.SelectedIndex = 0;
             this.tabPilotList.Size = new System.Drawing.Size(1048, 677);
             this.tabPilotList.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1040, 651);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPilots
             // 
@@ -97,10 +100,11 @@
             this.tabProfile.Controls.Add(this.tabLogBook);
             this.tabProfile.Controls.Add(this.tabTypeRatings);
             this.tabProfile.Controls.Add(this.tabQualifications);
+            this.tabProfile.Controls.Add(this.tabAcademy);
             this.tabProfile.Location = new System.Drawing.Point(0, 0);
             this.tabProfile.Name = "tabProfile";
             this.tabProfile.SelectedIndex = 0;
-            this.tabProfile.Size = new System.Drawing.Size(1040, 655);
+            this.tabProfile.Size = new System.Drawing.Size(1044, 655);
             this.tabProfile.TabIndex = 0;
             // 
             // tabProfileInformation
@@ -110,7 +114,7 @@
             this.tabProfileInformation.Location = new System.Drawing.Point(4, 22);
             this.tabProfileInformation.Name = "tabProfileInformation";
             this.tabProfileInformation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProfileInformation.Size = new System.Drawing.Size(1032, 629);
+            this.tabProfileInformation.Size = new System.Drawing.Size(1036, 629);
             this.tabProfileInformation.TabIndex = 0;
             this.tabProfileInformation.Text = "Profile";
             this.tabProfileInformation.UseVisualStyleBackColor = true;
@@ -138,7 +142,7 @@
             this.tabLogBook.Location = new System.Drawing.Point(4, 22);
             this.tabLogBook.Name = "tabLogBook";
             this.tabLogBook.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLogBook.Size = new System.Drawing.Size(1032, 629);
+            this.tabLogBook.Size = new System.Drawing.Size(1036, 629);
             this.tabLogBook.TabIndex = 1;
             this.tabLogBook.Text = "LogBook";
             this.tabLogBook.UseVisualStyleBackColor = true;
@@ -147,7 +151,9 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 6);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1033, 617);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -160,7 +166,7 @@
             this.tabTypeRatings.Location = new System.Drawing.Point(4, 22);
             this.tabTypeRatings.Name = "tabTypeRatings";
             this.tabTypeRatings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTypeRatings.Size = new System.Drawing.Size(1032, 629);
+            this.tabTypeRatings.Size = new System.Drawing.Size(1036, 629);
             this.tabTypeRatings.TabIndex = 2;
             this.tabTypeRatings.Text = "TypeRatings";
             this.tabTypeRatings.UseVisualStyleBackColor = true;
@@ -202,17 +208,18 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.flightsByAircraftCtrl);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1040, 651);
             this.tabPage2.TabIndex = 2;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Schedules";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(563, 12);
+            this.btnFind.Location = new System.Drawing.Point(563, 9);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
             this.btnFind.TabIndex = 8;
@@ -229,11 +236,12 @@
             // 
             // tabQualifications
             // 
+            this.tabQualifications.Controls.Add(this.btnBasicQualification);
             this.tabQualifications.Controls.Add(this.GridQualificatioms);
             this.tabQualifications.Location = new System.Drawing.Point(4, 22);
             this.tabQualifications.Name = "tabQualifications";
             this.tabQualifications.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQualifications.Size = new System.Drawing.Size(1032, 629);
+            this.tabQualifications.Size = new System.Drawing.Size(1036, 629);
             this.tabQualifications.TabIndex = 3;
             this.tabQualifications.Text = "Qualifications";
             this.tabQualifications.UseVisualStyleBackColor = true;
@@ -246,11 +254,105 @@
             this.GridQualificatioms.Size = new System.Drawing.Size(844, 617);
             this.GridQualificatioms.TabIndex = 2;
             // 
+            // tabAcademy
+            // 
+            this.tabAcademy.Controls.Add(this.label5);
+            this.tabAcademy.Controls.Add(this.GridAvaialbleTExams);
+            this.tabAcademy.Controls.Add(this.label3);
+            this.tabAcademy.Controls.Add(this.label2);
+            this.tabAcademy.Controls.Add(this.GridPraticalExams);
+            this.tabAcademy.Controls.Add(this.GridTeoricalExams);
+            this.tabAcademy.Location = new System.Drawing.Point(4, 22);
+            this.tabAcademy.Name = "tabAcademy";
+            this.tabAcademy.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAcademy.Size = new System.Drawing.Size(1036, 629);
+            this.tabAcademy.TabIndex = 4;
+            this.tabAcademy.Text = "Academy";
+            this.tabAcademy.UseVisualStyleBackColor = true;
+            // 
+            // GridTeoricalExams
+            // 
+            this.GridTeoricalExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridTeoricalExams.Location = new System.Drawing.Point(2, 21);
+            this.GridTeoricalExams.Name = "GridTeoricalExams";
+            this.GridTeoricalExams.Size = new System.Drawing.Size(670, 263);
+            this.GridTeoricalExams.TabIndex = 3;
+            // 
+            // GridPraticalExams
+            // 
+            this.GridPraticalExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridPraticalExams.Location = new System.Drawing.Point(2, 314);
+            this.GridPraticalExams.Name = "GridPraticalExams";
+            this.GridPraticalExams.Size = new System.Drawing.Size(670, 263);
+            this.GridPraticalExams.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(222, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Teorical Exams";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(223, 298);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Pratical Exams";
+            // 
+            // btnBasicQualification
+            // 
+            this.btnBasicQualification.Location = new System.Drawing.Point(865, 39);
+            this.btnBasicQualification.Name = "btnBasicQualification";
+            this.btnBasicQualification.Size = new System.Drawing.Size(156, 23);
+            this.btnBasicQualification.TabIndex = 3;
+            this.btnBasicQualification.Text = "Insert First Qualification";
+            this.btnBasicQualification.UseVisualStyleBackColor = true;
+            this.btnBasicQualification.Click += new System.EventHandler(this.btnBasicQualification_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(347, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Find Pilot By Callsign";
+            // 
+            // flightsByAircraftCtrl
+            // 
+            this.flightsByAircraftCtrl.Location = new System.Drawing.Point(0, 0);
+            this.flightsByAircraftCtrl.Name = "flightsByAircraftCtrl";
+            this.flightsByAircraftCtrl.Size = new System.Drawing.Size(1044, 606);
+            this.flightsByAircraftCtrl.TabIndex = 0;
+            // 
+            // GridAvaialbleTExams
+            // 
+            this.GridAvaialbleTExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridAvaialbleTExams.Location = new System.Drawing.Point(678, 21);
+            this.GridAvaialbleTExams.Name = "GridAvaialbleTExams";
+            this.GridAvaialbleTExams.Size = new System.Drawing.Size(352, 263);
+            this.GridAvaialbleTExams.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(800, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Teorical Exams Available";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1072, 724);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFind);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.tabPilotList);
@@ -266,8 +368,14 @@
             this.tabTypeRatings.ResumeLayout(false);
             this.tabTypeRatings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridTypeRatings)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.tabQualifications.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridQualificatioms)).EndInit();
+            this.tabAcademy.ResumeLayout(false);
+            this.tabAcademy.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridTeoricalExams)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridPraticalExams)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridAvaialbleTExams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,7 +384,6 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabPilotList;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPilots;
         private System.Windows.Forms.TabControl tabProfile;
         private System.Windows.Forms.TabPage tabProfileInformation;
@@ -294,5 +401,15 @@
         private UI.PilotCtrl pilotCtrl1;
         private System.Windows.Forms.TabPage tabQualifications;
         private System.Windows.Forms.DataGridView GridQualificatioms;
+        private System.Windows.Forms.TabPage tabAcademy;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView GridPraticalExams;
+        private System.Windows.Forms.DataGridView GridTeoricalExams;
+        private System.Windows.Forms.Button btnBasicQualification;
+        private System.Windows.Forms.Label label4;
+        private UI.FlightsByAircraftCtrl flightsByAircraftCtrl;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView GridAvaialbleTExams;
     }
 }

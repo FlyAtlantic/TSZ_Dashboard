@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TSZDashboard.DatabaseEntries;
 using MySql.Data.MySqlClient;
+using TSZDashboard.UI;
 
 namespace TSZDashboard
 {
     public partial class Dashboard : Form
     {
-       
+
         public Dashboard()
         {
             InitializeComponent();           
@@ -29,14 +30,17 @@ namespace TSZDashboard
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            tabPilotList.SelectTab(1);
+            tabPilotList.SelectTab(0);
             tabProfile.SelectTab(0);
             pilotCtrl1.Update(new Pilot(txtFind.Text));
             comboTyperatingsname();
             FillLogBookDataGrid();
             FillTypeRatingskDataGrid();
             FillTypeQualificationskDataGrid();
-
+            FillTeoricalExams();
+            FillPraticalExams();
+            FillTeoricalExamsAvaialable();
+            btnBasicQualification_Disable();
         }
 
         private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
@@ -100,8 +104,8 @@ namespace TSZDashboard
             }
         }
 
-        private void FillTypeQualificationskDataGrid()
-        {
+        public void FillTypeQualificationskDataGrid()
+        {            
             MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
 
             try
@@ -117,6 +121,91 @@ namespace TSZDashboard
                 DataSet ds = new DataSet();
                 mysqlDs.Fill(ds);
                 GridQualificatioms.DataSource = ds.Tables[0];
+            }
+            catch (Exception crap)
+            {
+                MessageBox.Show(crap.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+           
+        }
+
+        private void FillTeoricalExams()
+        {
+            MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
+
+            try
+            {
+                conn.Open();
+
+                string sqlTeoricalExams = "select `ranks`.`rank`, `user_nome`, `user_apelido`, `date`, `state`, `result` from exam_results left join utilizadores on exam_results.pilotid = utilizadores.user_id LEFT JOIN exam_assigns ON exam_results.examassigned = exam_assigns.assign_id LEFT JOIN ranks ON ranks.rankid = exam_assigns.exam_id where utilizadores.callsign = @Callsign";
+
+                MySqlCommand sqlCmd = new MySqlCommand(sqlTeoricalExams, conn);
+                sqlCmd.Parameters.AddWithValue("@Callsign", txtFind.Text);
+
+                MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
+                DataSet ds = new DataSet();
+                mysqlDs.Fill(ds);
+                GridTeoricalExams.DataSource = ds.Tables[0];
+            }
+            catch (Exception crap)
+            {
+                MessageBox.Show(crap.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void FillPraticalExams()
+        {
+            MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
+
+            try
+            {
+                conn.Open();
+
+                string sqlPraticalExams = "select `ranks`.`rank`, `user_nome`, `user_apelido`, `date`, `name`, `result` from pratical_exams left join ranks on pratical_exams.rank = ranks.rankid left join utilizadores on pratical_exams.user_id = utilizadores.user_id left join instructors on pratical_exams.instructor = instructors.id where utilizadores.callsign = @Callsign";
+
+                MySqlCommand sqlCmd = new MySqlCommand(sqlPraticalExams, conn);
+                sqlCmd.Parameters.AddWithValue("@Callsign", txtFind.Text);
+
+                MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
+                DataSet ds = new DataSet();
+                mysqlDs.Fill(ds);
+                GridPraticalExams.DataSource = ds.Tables[0];
+            }
+            catch (Exception crap)
+            {
+                MessageBox.Show(crap.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void FillTeoricalExamsAvaialable()
+        {
+            MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
+
+            try
+            {
+                conn.Open();
+
+                string sqlPraticalExams = "select `ranks`.`rank`, `dateassign` from exam_assigns left join utilizadores on exam_assigns.idpilot = utilizadores.user_id left join ranks on exam_assigns.exam_id = ranks.rankid where callsign = @Callsign and avaiable = 1";
+
+                MySqlCommand sqlCmd = new MySqlCommand(sqlPraticalExams, conn);
+                sqlCmd.Parameters.AddWithValue("@Callsign", txtFind.Text);
+
+                MySqlDataAdapter mysqlDs = new MySqlDataAdapter(sqlCmd);
+                DataSet ds = new DataSet();
+                mysqlDs.Fill(ds);
+                GridAvaialbleTExams.DataSource = ds.Tables[0];
             }
             catch (Exception crap)
             {
@@ -175,6 +264,9 @@ namespace TSZDashboard
                 comboTyperatingsname();
                 FillLogBookDataGrid();
                 FillTypeRatingskDataGrid();
+                FillTypeQualificationskDataGrid();
+                FillTeoricalExams();
+                FillPraticalExams();
 
             }
             catch (Exception crap)
@@ -187,6 +279,61 @@ namespace TSZDashboard
             }
         }
 
-       
+        private void btnBasicQualification_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
+
+            try
+            {
+                conn.Open();
+                string sqlInsertTypeRating = "INSERT INTO `qualifications` ( `qualification` , `pilot` , `validity` , `expire` ) VALUES(0, @ID, NOW() , NOW()+INTERVAL 100 YEAR)";
+                MySqlCommand sqlCmd = new MySqlCommand(sqlInsertTypeRating, conn);
+
+                sqlCmd.Parameters.AddWithValue("@ID", pilotCtrl1.PilotID);
+                sqlCmd.ExecuteNonQuery();
+                pilotCtrl1.Update(new Pilot(txtFind.Text));
+                comboTyperatingsname();
+                FillLogBookDataGrid();
+                FillTypeRatingskDataGrid();
+                FillTypeQualificationskDataGrid();
+                FillTeoricalExams();
+                FillPraticalExams();
+                btnBasicQualification_Disable();
+
+            }
+            catch (Exception crap)
+            {
+                MessageBox.Show(crap.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void btnBasicQualification_Disable()
+        {
+            string sqlCountQualification = "select Count(*) from qualifications left join utilizadores on qualifications.pilot = utilizadores.user_id where callsign = @Callsign";
+            MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
+
+            try
+            {
+                conn.Open();
+                MySqlCommand sqlCmd = new MySqlCommand(sqlCountQualification, conn);
+                sqlCmd.Parameters.AddWithValue("@Callsign", txtFind.Text);
+
+                btnBasicQualification.Enabled = (Convert.ToInt32(sqlCmd.ExecuteScalar()) == 0);
+
+            }
+            catch (Exception crap)
+            {
+                MessageBox.Show(crap.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }

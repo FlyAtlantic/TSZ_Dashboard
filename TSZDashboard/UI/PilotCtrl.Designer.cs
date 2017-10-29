@@ -32,8 +32,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.Label();
-            this.txtSurname = new System.Windows.Forms.TextBox();
-            this.lblSurname = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCallsign = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,13 +74,14 @@
             // 
             this.txtName.Location = new System.Drawing.Point(61, 81);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.Size = new System.Drawing.Size(233, 20);
             this.txtName.TabIndex = 1;
             // 
             // txtID
             // 
             this.txtID.Location = new System.Drawing.Point(61, 33);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 3;
             // 
@@ -94,22 +93,6 @@
             this.lblID.Size = new System.Drawing.Size(18, 13);
             this.lblID.TabIndex = 2;
             this.lblID.Text = "ID";
-            // 
-            // txtSurname
-            // 
-            this.txtSurname.Location = new System.Drawing.Point(233, 81);
-            this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(100, 20);
-            this.txtSurname.TabIndex = 5;
-            // 
-            // lblSurname
-            // 
-            this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(178, 81);
-            this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(49, 13);
-            this.lblSurname.TabIndex = 4;
-            this.lblSurname.Text = "Surname";
             // 
             // label1
             // 
@@ -130,7 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(367, 81);
+            this.label2.Location = new System.Drawing.Point(352, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 8;
@@ -138,7 +121,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(405, 81);
+            this.txtEmail.Location = new System.Drawing.Point(390, 81);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(260, 20);
             this.txtEmail.TabIndex = 9;
@@ -156,6 +139,7 @@
             // 
             this.txtAntique.Location = new System.Drawing.Point(61, 130);
             this.txtAntique.Name = "txtAntique";
+            this.txtAntique.ReadOnly = true;
             this.txtAntique.Size = new System.Drawing.Size(100, 20);
             this.txtAntique.TabIndex = 11;
             // 
@@ -205,7 +189,7 @@
             // lblActive
             // 
             this.lblActive.AutoSize = true;
-            this.lblActive.Location = new System.Drawing.Point(231, 135);
+            this.lblActive.Location = new System.Drawing.Point(217, 133);
             this.lblActive.Name = "lblActive";
             this.lblActive.Size = new System.Drawing.Size(80, 13);
             this.lblActive.TabIndex = 20;
@@ -233,6 +217,7 @@
             // 
             this.txtLocation.Location = new System.Drawing.Point(396, 226);
             this.txtLocation.Name = "txtLocation";
+            this.txtLocation.ReadOnly = true;
             this.txtLocation.Size = new System.Drawing.Size(100, 20);
             this.txtLocation.TabIndex = 30;
             // 
@@ -249,6 +234,7 @@
             // 
             this.txtEPS.Location = new System.Drawing.Point(220, 226);
             this.txtEPS.Name = "txtEPS";
+            this.txtEPS.ReadOnly = true;
             this.txtEPS.Size = new System.Drawing.Size(100, 20);
             this.txtEPS.TabIndex = 28;
             // 
@@ -265,6 +251,7 @@
             // 
             this.txtHour.Location = new System.Drawing.Point(61, 226);
             this.txtHour.Name = "txtHour";
+            this.txtHour.ReadOnly = true;
             this.txtHour.Size = new System.Drawing.Size(100, 20);
             this.txtHour.TabIndex = 26;
             // 
@@ -281,6 +268,7 @@
             // 
             this.txtLastFlight.Location = new System.Drawing.Point(565, 226);
             this.txtLastFlight.Name = "txtLastFlight";
+            this.txtLastFlight.ReadOnly = true;
             this.txtLastFlight.Size = new System.Drawing.Size(100, 20);
             this.txtLastFlight.TabIndex = 32;
             // 
@@ -364,8 +352,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCallsign);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtSurname);
-            this.Controls.Add(this.lblSurname);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.txtName);
@@ -383,8 +369,6 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.TextBox txtSurname;
-        private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCallsign;
         private System.Windows.Forms.Label label2;

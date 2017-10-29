@@ -40,10 +40,6 @@ namespace TSZDashboard.DatabaseEntries
         {
             get;set;
         }
-        public string Surname
-        {
-            get; set;
-        }
         public string TypeRatingName
         {
             get; set;
@@ -135,8 +131,7 @@ namespace TSZDashboard.DatabaseEntries
                     while (sqlCmdRes.Read())
                     {
                         ID = (int)sqlCmdRes[0];
-                        Name = (string)sqlCmdRes[1];
-                        Surname = (string)sqlCmdRes[2];
+                        Name = (string)sqlCmdRes[1] +" "+ (string)sqlCmdRes[2];
                         Antique = (DateTime)sqlCmdRes[3];
                         PilotCallsign = (int)sqlCmdRes[4];
                         Email = (string)sqlCmdRes[5];
@@ -182,8 +177,7 @@ namespace TSZDashboard.DatabaseEntries
                     while (sqlCmdRes.Read())
                     {
                         ID = (int)sqlCmdRes[0];
-                        Name = (string)sqlCmdRes[1];
-                        Surname = (string)sqlCmdRes[2];
+                        Name = (string)sqlCmdRes[1] +" "+ (string)sqlCmdRes[2];
                         Antique = (DateTime)sqlCmdRes[3];
                         PilotCallsign = (int)sqlCmdRes[4];
                         Email = (string)sqlCmdRes[5];
@@ -197,15 +191,20 @@ namespace TSZDashboard.DatabaseEntries
                         StaffLevel = (int)sqlCmdRes[13];
                         Hub = (int)sqlCmdRes[14];
                         Location = (string)sqlCmdRes[15];
-                        //LastFlight = (DateTime)sqlCmdRes[16];
+                        LastFlight = (DateTime)sqlCmdRes[16];
 
                     }
                 else
                     throw new Exception("Não encontrado o Callsign " + Callsign.ToString());
             }
+            catch (InvalidCastException crap)
+            {
+                // known issue with line 194
+            }
             catch (Exception crap)
             {
                 // pass the exception to the caller with an usefull message
+
                 throw new Exception("Falhou a ler o Callsign " + Callsign.ToString(), crap);
             }
             finally
@@ -224,8 +223,6 @@ namespace TSZDashboard.DatabaseEntries
                 conn.Open();
                 MySqlCommand sqlCmd = new MySqlCommand(sqlUpdate, conn);
                 sqlCmd.Parameters.AddWithValue("@ID", ID);
-                sqlCmd.Parameters.AddWithValue("@name", Name);
-                sqlCmd.Parameters.AddWithValue("@surname", Surname);
 
                 sqlCmd.ExecuteNonQuery();
             }
