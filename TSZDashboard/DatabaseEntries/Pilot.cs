@@ -44,14 +44,73 @@ namespace TSZDashboard.DatabaseEntries
         {
             get; set;
         }
+        public string TypeRatingName
+        {
+            get; set;
+        }
+        public DateTime Antique
+        {
+            get; private set;
+        }
+        public int PilotCallsign
+        {
+            get; set;
+        }
+        public string Email
+        {
+            get; set;
+        }
+        public int LevelId
+        {
+            get; set;
+        }
+        public string Rate
+        {
+            get; set;
+        }
+        public int Rank
+        {
+            get; set;
+        }
+        public string VatsimId
+        {
+            get; set;
+        }
+        public int ActiveAccount
+        {
+            get; set;
+        }
+        public int PilotHours
+        {
+            get; set;
+        }
+        public int PilotEps
+        {
+            get; set;
+        }
+        public int StaffLevel
+        {
+            get; set;
+        }
+        public int Hub
+        {
+            get; set;
+        }
+        public string Location
+        {
+            get; set;
+        }
+        public DateTime LastFlight
+        {
+            get; set;
+        }
         #endregion propriedades
 
         #region SqlEntries
-        string sqlRead = "SELECT user_nome, user_apelido, callsign FROM `utilizadores` WHERE user_id = @ID";
-        string sqlReadCallsign = "SELECT user_id, user_nome, user_apelido FROM `utilizadores` WHERE callsign = @Callsign";
+        string sqlRead = "SELECT user_id, user_nome, user_apelido, user_dataregisto, callsign, user_email, levelid, rate, rank, idvatsim, active, pilot_hours, eps, stafflevel, hub, location, date FROM `utilizadores` left join pireps on utilizadores.user_id = pireps.pilotid WHERE user_id = @ID order by date desc limit 1";
+        string sqlReadCallsign = "SELECT user_id, user_nome, user_apelido, user_dataregisto, callsign, user_email, levelid, rate, rank, idvatsim, active, pilot_hours, eps, stafflevel, hub, location, date FROM `utilizadores` left join pireps on utilizadores.user_id = pireps.pilotid WHERE callsign = @Callsign order by date desc limit 1";
         string sqlUpdate = "UPDATE utilizadores set user_nome = @name, user_apelido = @surname WHERE user_id = @ID LIMIT 1";
         string sqlDelete = "DELETE FROM `utilizadores` WHERE `utilizadores`.`user_id` = @ID LIMIT 1";
-        string sqlLogbook = "SELECT * FROM pireps WHERE pilot_id=@ID";
         #endregion region SqlEntries
 
         MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
@@ -75,9 +134,23 @@ namespace TSZDashboard.DatabaseEntries
                 if (sqlCmdRes.HasRows)
                     while (sqlCmdRes.Read())
                     {
-                        Name = (string)sqlCmdRes[0];
-                        Surname = (string)sqlCmdRes[1];
-                        Callsign = (string)sqlCmdRes[2];
+                        ID = (int)sqlCmdRes[0];
+                        Name = (string)sqlCmdRes[1];
+                        Surname = (string)sqlCmdRes[2];
+                        Antique = (DateTime)sqlCmdRes[3];
+                        PilotCallsign = (int)sqlCmdRes[4];
+                        Email = (string)sqlCmdRes[5];
+                        LevelId = (int)sqlCmdRes[6];
+                        Rate = (string)sqlCmdRes[7];
+                        Rank = (int)sqlCmdRes[8];
+                        VatsimId = (string)sqlCmdRes[9];
+                        ActiveAccount = (int)sqlCmdRes[10];
+                        PilotHours = (int)sqlCmdRes[11];
+                        PilotEps = (int)sqlCmdRes[12];
+                        StaffLevel = (int)sqlCmdRes[13];
+                        Hub = (int)sqlCmdRes[14];
+                        Location = (string)sqlCmdRes[15];
+                        LastFlight = (DateTime)sqlCmdRes[16];
                     }
                 else
                     throw new Exception("Não encontrado o ID " + ID.ToString());
@@ -111,6 +184,21 @@ namespace TSZDashboard.DatabaseEntries
                         ID = (int)sqlCmdRes[0];
                         Name = (string)sqlCmdRes[1];
                         Surname = (string)sqlCmdRes[2];
+                        Antique = (DateTime)sqlCmdRes[3];
+                        PilotCallsign = (int)sqlCmdRes[4];
+                        Email = (string)sqlCmdRes[5];
+                        LevelId = (int)sqlCmdRes[6];
+                        Rate = (string)sqlCmdRes[7];
+                        Rank = (int)sqlCmdRes[8];
+                        VatsimId = (string)sqlCmdRes[9];
+                        ActiveAccount = (int)sqlCmdRes[10];
+                        PilotHours = (int)sqlCmdRes[11];
+                        PilotEps = (int)sqlCmdRes[12];
+                        StaffLevel = (int)sqlCmdRes[13];
+                        Hub = (int)sqlCmdRes[14];
+                        Location = (string)sqlCmdRes[15];
+                        //LastFlight = (DateTime)sqlCmdRes[16];
+
                     }
                 else
                     throw new Exception("Não encontrado o Callsign " + Callsign.ToString());
@@ -174,6 +262,6 @@ namespace TSZDashboard.DatabaseEntries
 
         }
 
-
+       
     }
 }
