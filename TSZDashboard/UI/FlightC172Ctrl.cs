@@ -45,6 +45,7 @@ namespace TSZDashboard.UI
                 GridRoutesC172.DataSource = ds.Tables[0];
 
                 LBL1.Text = aircraft;
+                
             }
             catch (Exception crap)
             {
@@ -61,7 +62,7 @@ namespace TSZDashboard.UI
             this.Hide();
         }
         
-        public void FillRoutesByDep(string Aircraft)
+        public void FillRoutesByDep()
         {
             MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
             
@@ -79,6 +80,7 @@ namespace TSZDashboard.UI
                 DataSet ds = new DataSet();
                 mysqlDs.Fill(ds);
                 GridRoutesC172.DataSource = ds.Tables[0];
+
             }
             catch (Exception crap)
             {
@@ -91,7 +93,7 @@ namespace TSZDashboard.UI
         }
         public void btnFindByDeparture_Click(object sender, EventArgs e)
         {
-            FillRoutesByDep(txtDepIcao.Text);
+            FillRoutesByDep();
         }    
     }
 }

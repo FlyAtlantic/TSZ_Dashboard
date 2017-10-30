@@ -72,6 +72,7 @@
             this.btnFindByDeparture.TabIndex = 24;
             this.btnFindByDeparture.Text = "Find by Departure";
             this.btnFindByDeparture.UseVisualStyleBackColor = true;
+            this.btnFindByDeparture.Click += new System.EventHandler(this.btnFindByDeparture_Click);
             // 
             // label1
             // 

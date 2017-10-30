@@ -84,7 +84,6 @@ namespace TSZDashboard.UI
         private void btnFlightC172_Click(object sender, EventArgs e)
         {
             flightC172Ctrl.Show(AircraftSelected);
-            flightC172Ctrl.FillRoutesByDep(AircraftSelected);
         }
 
         private void comboTyperatingsname()
