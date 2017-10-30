@@ -41,21 +41,22 @@
             this.cboxTyperatingsname = new System.Windows.Forms.ComboBox();
             this.btnInsertTyperating = new System.Windows.Forms.Button();
             this.GridTypeRatings = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.txtFind = new System.Windows.Forms.TextBox();
             this.tabQualifications = new System.Windows.Forms.TabPage();
+            this.btnBasicQualification = new System.Windows.Forms.Button();
             this.GridQualificatioms = new System.Windows.Forms.DataGridView();
             this.tabAcademy = new System.Windows.Forms.TabPage();
-            this.GridTeoricalExams = new System.Windows.Forms.DataGridView();
-            this.GridPraticalExams = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnBasicQualification = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.flightsByAircraftCtrl = new TSZDashboard.UI.FlightsByAircraftCtrl();
-            this.GridAvaialbleTExams = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
+            this.GridAvaialbleTExams = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.GridPraticalExams = new System.Windows.Forms.DataGridView();
+            this.GridTeoricalExams = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.flightsByAircraftCtrl = new TSZDashboard.UI.FlightsByAircraftCtrl();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnFGenerateTeoricalExam = new System.Windows.Forms.Button();
             this.tabPilotList.SuspendLayout();
             this.tabPilots.SuspendLayout();
             this.tabProfile.SuspendLayout();
@@ -64,13 +65,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabTypeRatings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridTypeRatings)).BeginInit();
-            this.tabPage2.SuspendLayout();
             this.tabQualifications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridQualificatioms)).BeginInit();
             this.tabAcademy.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridTeoricalExams)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridPraticalExams)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridAvaialbleTExams)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridPraticalExams)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridTeoricalExams)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPilotList
@@ -206,6 +207,104 @@
             this.GridTypeRatings.Size = new System.Drawing.Size(844, 617);
             this.GridTypeRatings.TabIndex = 1;
             // 
+            // tabQualifications
+            // 
+            this.tabQualifications.Controls.Add(this.btnBasicQualification);
+            this.tabQualifications.Controls.Add(this.GridQualificatioms);
+            this.tabQualifications.Location = new System.Drawing.Point(4, 22);
+            this.tabQualifications.Name = "tabQualifications";
+            this.tabQualifications.Padding = new System.Windows.Forms.Padding(3);
+            this.tabQualifications.Size = new System.Drawing.Size(1036, 629);
+            this.tabQualifications.TabIndex = 3;
+            this.tabQualifications.Text = "Qualifications";
+            this.tabQualifications.UseVisualStyleBackColor = true;
+            // 
+            // btnBasicQualification
+            // 
+            this.btnBasicQualification.Location = new System.Drawing.Point(865, 39);
+            this.btnBasicQualification.Name = "btnBasicQualification";
+            this.btnBasicQualification.Size = new System.Drawing.Size(156, 23);
+            this.btnBasicQualification.TabIndex = 3;
+            this.btnBasicQualification.Text = "Insert First Qualification";
+            this.btnBasicQualification.UseVisualStyleBackColor = true;
+            this.btnBasicQualification.Click += new System.EventHandler(this.btnBasicQualification_Click);
+            // 
+            // GridQualificatioms
+            // 
+            this.GridQualificatioms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridQualificatioms.Location = new System.Drawing.Point(0, 0);
+            this.GridQualificatioms.Name = "GridQualificatioms";
+            this.GridQualificatioms.Size = new System.Drawing.Size(844, 617);
+            this.GridQualificatioms.TabIndex = 2;
+            // 
+            // tabAcademy
+            // 
+            this.tabAcademy.Controls.Add(this.btnFGenerateTeoricalExam);
+            this.tabAcademy.Controls.Add(this.label5);
+            this.tabAcademy.Controls.Add(this.GridAvaialbleTExams);
+            this.tabAcademy.Controls.Add(this.label3);
+            this.tabAcademy.Controls.Add(this.label2);
+            this.tabAcademy.Controls.Add(this.GridPraticalExams);
+            this.tabAcademy.Controls.Add(this.GridTeoricalExams);
+            this.tabAcademy.Location = new System.Drawing.Point(4, 22);
+            this.tabAcademy.Name = "tabAcademy";
+            this.tabAcademy.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAcademy.Size = new System.Drawing.Size(1036, 629);
+            this.tabAcademy.TabIndex = 4;
+            this.tabAcademy.Text = "Academy";
+            this.tabAcademy.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(800, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Teorical Exams Available";
+            // 
+            // GridAvaialbleTExams
+            // 
+            this.GridAvaialbleTExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridAvaialbleTExams.Location = new System.Drawing.Point(678, 21);
+            this.GridAvaialbleTExams.Name = "GridAvaialbleTExams";
+            this.GridAvaialbleTExams.Size = new System.Drawing.Size(352, 263);
+            this.GridAvaialbleTExams.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(223, 298);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Pratical Exams";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(222, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Teorical Exams";
+            // 
+            // GridPraticalExams
+            // 
+            this.GridPraticalExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridPraticalExams.Location = new System.Drawing.Point(2, 314);
+            this.GridPraticalExams.Name = "GridPraticalExams";
+            this.GridPraticalExams.Size = new System.Drawing.Size(670, 263);
+            this.GridPraticalExams.TabIndex = 4;
+            // 
+            // GridTeoricalExams
+            // 
+            this.GridTeoricalExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridTeoricalExams.Location = new System.Drawing.Point(2, 21);
+            this.GridTeoricalExams.Name = "GridTeoricalExams";
+            this.GridTeoricalExams.Size = new System.Drawing.Size(670, 263);
+            this.GridTeoricalExams.TabIndex = 3;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.flightsByAircraftCtrl);
@@ -216,6 +315,13 @@
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Schedules";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // flightsByAircraftCtrl
+            // 
+            this.flightsByAircraftCtrl.Location = new System.Drawing.Point(0, 0);
+            this.flightsByAircraftCtrl.Name = "flightsByAircraftCtrl";
+            this.flightsByAircraftCtrl.Size = new System.Drawing.Size(1044, 606);
+            this.flightsByAircraftCtrl.TabIndex = 0;
             // 
             // btnFind
             // 
@@ -234,86 +340,6 @@
             this.txtFind.Size = new System.Drawing.Size(100, 20);
             this.txtFind.TabIndex = 7;
             // 
-            // tabQualifications
-            // 
-            this.tabQualifications.Controls.Add(this.btnBasicQualification);
-            this.tabQualifications.Controls.Add(this.GridQualificatioms);
-            this.tabQualifications.Location = new System.Drawing.Point(4, 22);
-            this.tabQualifications.Name = "tabQualifications";
-            this.tabQualifications.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQualifications.Size = new System.Drawing.Size(1036, 629);
-            this.tabQualifications.TabIndex = 3;
-            this.tabQualifications.Text = "Qualifications";
-            this.tabQualifications.UseVisualStyleBackColor = true;
-            // 
-            // GridQualificatioms
-            // 
-            this.GridQualificatioms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridQualificatioms.Location = new System.Drawing.Point(0, 0);
-            this.GridQualificatioms.Name = "GridQualificatioms";
-            this.GridQualificatioms.Size = new System.Drawing.Size(844, 617);
-            this.GridQualificatioms.TabIndex = 2;
-            // 
-            // tabAcademy
-            // 
-            this.tabAcademy.Controls.Add(this.label5);
-            this.tabAcademy.Controls.Add(this.GridAvaialbleTExams);
-            this.tabAcademy.Controls.Add(this.label3);
-            this.tabAcademy.Controls.Add(this.label2);
-            this.tabAcademy.Controls.Add(this.GridPraticalExams);
-            this.tabAcademy.Controls.Add(this.GridTeoricalExams);
-            this.tabAcademy.Location = new System.Drawing.Point(4, 22);
-            this.tabAcademy.Name = "tabAcademy";
-            this.tabAcademy.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAcademy.Size = new System.Drawing.Size(1036, 629);
-            this.tabAcademy.TabIndex = 4;
-            this.tabAcademy.Text = "Academy";
-            this.tabAcademy.UseVisualStyleBackColor = true;
-            // 
-            // GridTeoricalExams
-            // 
-            this.GridTeoricalExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridTeoricalExams.Location = new System.Drawing.Point(2, 21);
-            this.GridTeoricalExams.Name = "GridTeoricalExams";
-            this.GridTeoricalExams.Size = new System.Drawing.Size(670, 263);
-            this.GridTeoricalExams.TabIndex = 3;
-            // 
-            // GridPraticalExams
-            // 
-            this.GridPraticalExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridPraticalExams.Location = new System.Drawing.Point(2, 314);
-            this.GridPraticalExams.Name = "GridPraticalExams";
-            this.GridPraticalExams.Size = new System.Drawing.Size(670, 263);
-            this.GridPraticalExams.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(222, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Teorical Exams";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(223, 298);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Pratical Exams";
-            // 
-            // btnBasicQualification
-            // 
-            this.btnBasicQualification.Location = new System.Drawing.Point(865, 39);
-            this.btnBasicQualification.Name = "btnBasicQualification";
-            this.btnBasicQualification.Size = new System.Drawing.Size(156, 23);
-            this.btnBasicQualification.TabIndex = 3;
-            this.btnBasicQualification.Text = "Insert First Qualification";
-            this.btnBasicQualification.UseVisualStyleBackColor = true;
-            this.btnBasicQualification.Click += new System.EventHandler(this.btnBasicQualification_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -323,29 +349,15 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Find Pilot By Callsign";
             // 
-            // flightsByAircraftCtrl
+            // btnFGenerateTeoricalExam
             // 
-            this.flightsByAircraftCtrl.Location = new System.Drawing.Point(0, 0);
-            this.flightsByAircraftCtrl.Name = "flightsByAircraftCtrl";
-            this.flightsByAircraftCtrl.Size = new System.Drawing.Size(1044, 606);
-            this.flightsByAircraftCtrl.TabIndex = 0;
-            // 
-            // GridAvaialbleTExams
-            // 
-            this.GridAvaialbleTExams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridAvaialbleTExams.Location = new System.Drawing.Point(678, 21);
-            this.GridAvaialbleTExams.Name = "GridAvaialbleTExams";
-            this.GridAvaialbleTExams.Size = new System.Drawing.Size(352, 263);
-            this.GridAvaialbleTExams.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(800, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Teorical Exams Available";
+            this.btnFGenerateTeoricalExam.Location = new System.Drawing.Point(787, 314);
+            this.btnFGenerateTeoricalExam.Name = "btnFGenerateTeoricalExam";
+            this.btnFGenerateTeoricalExam.Size = new System.Drawing.Size(138, 23);
+            this.btnFGenerateTeoricalExam.TabIndex = 9;
+            this.btnFGenerateTeoricalExam.Text = "Generate Teorical Exam";
+            this.btnFGenerateTeoricalExam.UseVisualStyleBackColor = true;
+            this.btnFGenerateTeoricalExam.Click += new System.EventHandler(this.btnFGenerateTeoricalExam_Click);
             // 
             // Dashboard
             // 
@@ -368,14 +380,14 @@
             this.tabTypeRatings.ResumeLayout(false);
             this.tabTypeRatings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridTypeRatings)).EndInit();
-            this.tabPage2.ResumeLayout(false);
             this.tabQualifications.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridQualificatioms)).EndInit();
             this.tabAcademy.ResumeLayout(false);
             this.tabAcademy.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridTeoricalExams)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridPraticalExams)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridAvaialbleTExams)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridPraticalExams)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridTeoricalExams)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,5 +423,6 @@
         private UI.FlightsByAircraftCtrl flightsByAircraftCtrl;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView GridAvaialbleTExams;
+        private System.Windows.Forms.Button btnFGenerateTeoricalExam;
     }
 }

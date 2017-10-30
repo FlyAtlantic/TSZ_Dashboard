@@ -19,7 +19,7 @@ namespace TSZDashboard
         public Dashboard()
         {
             InitializeComponent();           
-        }               
+        }
 
         private void btnSaveProfile_Click(object sender, EventArgs e)
         {
@@ -335,5 +335,56 @@ namespace TSZDashboard
             }
         }
 
+        public string generateID(string url_add)
+        {
+            long i = 1;
+
+            foreach (byte b in Guid.NewGuid().ToByteArray())
+            {
+                i *= ((int)b + 1);
+            }
+
+            string number = String.Format("{0:d9}", (DateTime.Now.Ticks / 10) % 1000000000);
+
+            return number;
+        }
+
+        private void btnFGenerateTeoricalExam_Click(object sender, EventArgs e)
+        {
+            object rankID = pilotCtrl1.RankId;
+            int IntRankID = int.Parse(string.Format("{0}", rankID));
+            int NextRating = IntRankID + 1;
+
+            MySqlConnection conn = new MySqlConnection(Program.ConnectionString);
+
+            try
+            {
+                conn.Open();
+                string sqlInsertTypeRating = "INSERT INTO `exam_assigns` (`idpilot`, `exam_id`, `uid1`, `dateassign`) VALUES (@ID, @NextRating, @UID, NOW())";
+                MySqlCommand sqlCmd = new MySqlCommand(sqlInsertTypeRating, conn);
+
+                sqlCmd.Parameters.AddWithValue("@ID", pilotCtrl1.PilotID);
+                sqlCmd.Parameters.AddWithValue("@NextRating", NextRating);
+                sqlCmd.Parameters.AddWithValue("@UID", generateID(txtFind.Text));
+                sqlCmd.ExecuteNonQuery();
+                pilotCtrl1.Update(new Pilot(txtFind.Text));
+                comboTyperatingsname();
+                FillLogBookDataGrid();
+                FillTypeRatingskDataGrid();
+                FillTypeQualificationskDataGrid();
+                FillTeoricalExams();
+                FillPraticalExams();
+                FillTeoricalExamsAvaialable();
+
+            }
+            catch (Exception crap)
+            {
+                MessageBox.Show(crap.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

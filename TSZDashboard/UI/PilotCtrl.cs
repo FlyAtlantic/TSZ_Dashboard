@@ -29,6 +29,11 @@ namespace TSZDashboard.UI
             get { return txtName.Text; }
         }
 
+        public object RankId
+        {
+            get { return cboxRank.SelectedValue; }
+        }
+
         public PilotCtrl()
         {
             InitializeComponent();
@@ -221,5 +226,6 @@ namespace TSZDashboard.UI
         {
             p.Update();
         }
+
     }
 }
