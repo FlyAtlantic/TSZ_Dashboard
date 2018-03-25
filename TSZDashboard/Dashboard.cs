@@ -225,7 +225,7 @@ namespace TSZDashboard
             {
                 conn.Open();
 
-                string sqlTyperatingsname = " SELECT typeratingsname.id, typeratingsname.name FROM typeratingsname left join utilizadores on utilizadores.rate >= typeratingsname.rank left join typeratings on typeratings.typerating = typeratingsname.id and typeratings.pilot = utilizadores.user_id WHERE utilizadores.callsign = @Callsign and typeratings.id is null";
+                string sqlTyperatingsname = " SELECT typeratingsname.id, typeratingsname.name FROM typeratingsname left join utilizadores on utilizadores.rank >= typeratingsname.rank left join typeratings on typeratings.typerating = typeratingsname.id and typeratings.pilot = utilizadores.user_id WHERE utilizadores.callsign = @Callsign and typeratings.id is null";
 
                 MySqlCommand sqlCmd = new MySqlCommand(sqlTyperatingsname, conn);
                 sqlCmd.Parameters.AddWithValue("@Callsign", txtFind.Text);
